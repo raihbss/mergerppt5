@@ -15,9 +15,9 @@ class MergerPpt
 {
     protected PhpPresentation $presentation;
 
-    public function __construct(PhpPresentation $pres)
+    public function __construct()
     {
-        $this->presentation = $pres;
+        $this->presentation = new PhpPresentation();
     }
 
     public function merge(string $ppt1, string $ppt2, string $outputFileName)
@@ -64,8 +64,7 @@ class MergerPpt
 }
 
 function clientCode(string $ppt1, string $ppt2, string $outputFileName){
-    $presentation = new PhpPresentation();
-    $merger = new MergerPpt($presentation);
+    $merger = new MergerPpt();
     $merger->merge($ppt1, $ppt2, $outputFileName);
 }
 
