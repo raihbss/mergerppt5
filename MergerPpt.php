@@ -68,4 +68,16 @@ function clientCode(string $ppt1, string $ppt2, string $outputFileName){
     $merger->merge($ppt1, $ppt2, $outputFileName);
 }
 
-clientCode("pp1.pptx", "pp1.pptx", "test.pptx");
+// clientCode("pp1.pptx", "pp1.pptx", "test.pptx");
+
+function deleteSinglePage(int $index, $fileName)
+{
+    $reader = IOFactory::createReader('PowerPoint2007');
+    $pres = $reader->load($fileName);
+    $newPres = $pres->removeSlideByIndex($index);
+
+    $writer = IOFactory::createWriter($newPres, 'PowerPoint2007');
+    $writer->save("new_slide.pptx");
+}
+
+// deleteSinglePage(2, "pp2.pptx");
